@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Products from "./components/Products/Products";
+import ProductDetail from "./components/ProductDetails/ProductDetails";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import AddProduct from "./components/AddProduct/AddProduct";
+import AddCategory from "./components/AddCategory/AddCategory";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Products />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/add/product" element={<AddProduct/>} />
+        <Route path="/add/category" element={<AddCategory/>} />
+
+
+      </Routes>
+      <Footer />
+    </BrowserRouter>
   );
 }
 
